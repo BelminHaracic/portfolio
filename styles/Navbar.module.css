@@ -1,0 +1,117 @@
+/* Navbar.module.css */
+
+.navbar {
+  background-color: rgba(27, 27, 27, 0.8); /* Providnost za moderan izgled */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Dublja senka */
+  backdrop-filter: blur(8px); /* Zamagljen efekat pozadine */
+  transition: all 0.3s ease; /* Glatka promena svih stilova */
+}
+
+.navbar:hover {
+  background-color: rgba(27, 27, 27, 1); /* Tamniji efekat pri hoveru */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Jača senka na hover */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  font-size: 1.8rem; /* Povećanje fonta */
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover {
+  color: #00f0ff; /* Promena boje na hover */
+  transform: scale(1.1); /* Lagano povećanje loga */
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.links a:hover {
+  color: #00f0ff; /* Promena boje linkova */
+  transform: translateY(-4px); /* Efekt podizanja linkova */
+}
+
+.socialMedia {
+  display: flex;
+  gap: 20px;
+  animation: fadeIn 2s ease-out;
+}
+
+.socialMedia a {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.socialMedia a:hover {
+  transform: scale(1.2); /* Uvećanje ikona na hover */
+  color: #00f0ff; /* Promena boje ikona */
+}
+
+.icon {
+  color: white;
+  font-size: 2.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+  transform: rotate(20deg); /* Rotacija ikona na hover */
+  color: #00f0ff; /* Promena boje ikona */
+}
+
+/* Animacija za socijalne ikone */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive dizajn */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .container {
+    flex-direction: row; /* Držimo sve u jednom redu na manjim ekranima */
+  }
+
+  .links {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .links a {
+    margin: 0 1rem;
+  }
+}
