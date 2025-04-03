@@ -1,0 +1,46 @@
+.experience {
+    background-color: #111;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .experience h2 {
+    font-size: 2.8rem;
+    color: #00f0ff;
+    margin-bottom: 2rem;
+  }
+  
+  .experienceItem {
+    background: rgba(48, 48, 48, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+  
+  .experienceItem h3 {
+    font-size: 2rem;
+    color: #00f0ff;
+  }
+  
+  .company {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .date {
+    font-size: 1rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+  }
+  
+  .responsibilities {
+    list-style-type: disc;
+    padding-left: 2rem;
+    text-align: left;
+    font-size: 1rem;
+    color: #ddd;
+  }
+  

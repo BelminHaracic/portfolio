@@ -1,0 +1,112 @@
+.education {
+    background: linear-gradient(135deg, #242424, #363636);
+    color: white;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  
+  .education h2 {
+    font-size: 3rem;
+    color: #00f0ff;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .education h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #00f0ff;
+    margin: 0.5rem auto;
+  }
+  
+  .educationItem {
+    background: rgba(48, 48, 48, 0.9);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    margin: 2.5rem auto;
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .educationItem:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+  }
+  
+  .educationItem h3 {
+    font-size: 2rem;
+    color: #00f0ff;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+  }
+  
+  .degree {
+    font-size: 1.3rem;
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  
+  .date {
+    font-size: 1rem;
+    color: #aaaaaa;
+    margin-bottom: 1rem;
+  }
+  
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-top: 2rem;
+    border-left: 3px solid #00f0ff;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #00f0ff;
+    border: 3px solid #363636;
+    border-radius: 50%;
+  }
+  
+  .timelineItem {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .timelineItem h3,
+  .timelineItem p {
+    margin-left: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .education {
+      padding: 3rem 1rem;
+    }
+  
+    .education h2 {
+      font-size: 2.5rem;
+    }
+  
+    .educationItem {
+      padding: 2rem;
+    }
+  
+    .educationItem h3 {
+      font-size: 1.8rem;
+    }
+  
+    .degree {
+      font-size: 1.1rem;
+    }
+  }
+  

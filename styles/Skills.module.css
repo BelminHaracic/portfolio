@@ -1,0 +1,181 @@
+.skills {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #1e1e1e, #333333);
+  color: white;
+}
+
+.skills h2 {
+  font-size: 2.5rem;
+  color: #00f0ff;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.skills h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #00f0ff;
+  margin: 0.5rem auto 0;
+  border-radius: 10px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skillCard {
+  background: #444;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.skillCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.skillIcon {
+  position: relative;
+  font-size: 2.5rem;
+  color: #00f0ff;
+  margin-bottom: 1rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.skillIcon:hover {
+  color: #00c4e0;
+  transform: rotate(10deg);
+}
+
+/* Tooltip stil - vidljiv samo na desktop uređajima */
+@media (min-width: 769px) {
+  .skillIcon[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+  }
+
+  .skillIcon[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Sakrivanje tooltipa kada nije hover */
+  .skillIcon[data-tooltip]::after,
+  .skillIcon[data-tooltip]::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+}
+
+/* Stil za opis na mobilnim uređajima */
+.mobileDescription {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Responsive stilovi */
+@media (max-width: 992px) {
+  .skills {
+    padding: 3rem 1.5rem;
+  }
+  
+  .skills h2 {
+    font-size: 2.2rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 2.5rem 1rem;
+  }
+  
+  .skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  
+  .skillCard {
+    padding: 1rem;
+  }
+  
+  .skillIcon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills h2 {
+    font-size: 1.8rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .skillCard {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .skillIcon {
+    font-size: 1.8rem;
+  }
+  
+  .mobileDescription {
+    font-size: 0.7rem;
+  }
+}
