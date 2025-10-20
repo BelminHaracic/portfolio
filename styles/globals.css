@@ -1,0 +1,308 @@
+/* Osnovna podešavanja za HTML i body */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%; /* Sprečava automatsko povećavanje fonta na iOS */
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #061015;
+  color: white;
+  overflow-x: hidden;
+  line-height: 1.6;
+  text-rendering: optimizeSpeed; /* Optimizacija brzine prikazivanja teksta */
+  -webkit-font-smoothing: antialiased; /* Poboljšava prikaz fonta na WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Poboljšava prikaz fonta na macOS */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Viewport optimizacija za mobilne uređaje */
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+/* Posebno za uređaje sa širinama oko 411px */
+@media screen and (width: 411px), 
+       screen and (width: 412px), 
+       screen and (width: 410px) {
+  html, body {
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+    margin: 0;
+  }
+}
+
+/* Uklanjanje viška padinga/margina na elementima forme (za mobilne) */
+input, button, textarea, select {
+  font: inherit;
+  max-width: 100%;
+}
+
+/* Osnovni kontejner */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Osnovna tipografija */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em; /* Blago smanjivanje razmaka između slova za naslove */
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Sekcije */
+section {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+/* Linkovi */
+a {
+  color: #00f0ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #00c0c9;
+}
+
+/* Dugmad */
+button, .btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: #00f0ff;
+  color: #1b1b1b;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+button:hover, .btn:hover {
+  background: #00c0c9;
+  transform: translateY(-3px);
+}
+
+/* Slike */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Sprečava nepotrebni whitespace ispod slika */
+}
+
+/* Focus stilovi za pristupačnost */
+:focus {
+  outline: 3px solid rgba(0, 240, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Touch optimizacije */
+@media (hover: none) {
+  /* Povećani touch target za mobilne */
+  a, button, .btn, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  /* Uklanjanje hover efekata na mobilnim */
+  a:hover, button:hover, .btn:hover {
+    transform: none;
+  }
+}
+
+/* Responsive tipografija i stilovi */
+@media (max-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+  
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+  
+  section {
+    padding: 3.5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Malo povećali sa 13px da poboljšamo čitljivost */
+  }
+  
+  body {
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.6rem; 
+  }
+  
+  section {
+    padding: 2.8rem 0;
+  }
+  
+  .container {
+    width: 92%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 14px; /* Održavamo 14px i za manje ekrane umesto daljeg smanjivanja */
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    font-size: 1.4rem;
+  }
+  
+  section {
+    padding: 2.5rem 0;
+  }
+  
+  .container {
+    width: 94%;
+    padding: 0 8px;
+  }
+  
+  button, .btn {
+    width: 100%; /* Puna širina za manje ekrane */
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  html, body {
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0 8px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  section {
+    padding: 2rem 0;
+  }
+  
+  .container {
+    width: 96%;
+    padding: 0 6px;
+  }
+}
+
+/* Fix za iOS probleme sa veličinom viewporta */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Dodatne optimizacije za touch */
+@media (pointer: coarse) {
+  /* Povećan spacing za elemente koji se dodiruju prstom */
+  ul li, ol li {
+    margin-bottom: 0.8rem;
+  }
+  
+  input, select, textarea {
+    font-size: 16px !important; /* Sprečava zoom na iOS */
+  }
+}

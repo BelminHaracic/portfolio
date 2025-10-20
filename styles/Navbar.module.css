@@ -1,0 +1,579 @@
+/* Navbar.module.css - BRUTAL VERSION - FIXED MOBILE */
+
+.navbar {
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(30px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(0, 240, 255, 0.1);
+}
+
+.navbarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 240, 255, 0.03) 50%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.navbar:hover .navbarBackground {
+  opacity: 1;
+}
+
+.navbarGlow {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    #00f0ff, 
+    #ff00ff, 
+    #00f0ff, 
+    transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.navbar.scrolled .navbarGlow {
+  opacity: 0.6;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+/* Extreme Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10002; /* Viši z-index za mobilnu verziju */
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.logo:hover::before {
+  left: 100%;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  color: #00f0ff;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.5));
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.8)); }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logoName {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #fff, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.logoLastName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff00ff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logoGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.logo:hover .logoGlow {
+  width: 120px;
+  height: 120px;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+/* Navigation Content - OVO JE KLJUČNO */
+.navContent {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Main Links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  animation: slideInRight 0.6s ease-out calc(var(--i) * 0.1s) both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.linkText {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.linkHover {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.navLink:hover .linkHover {
+  left: 100%;
+}
+
+.navLink:hover {
+  color: #00f0ff;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 5px 15px rgba(0, 240, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navLink.active {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 
+    0 0 20px rgba(0, 240, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navLink.active::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #00f0ff;
+  box-shadow: 0 0 10px #00f0ff;
+}
+
+/* Social Media */
+.socialMedia {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.socialLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.socialLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.socialLink:hover::before {
+  left: 100%;
+}
+
+.socialLink:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: #00f0ff;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 
+    0 5px 15px rgba(0, 240, 255, 0.4),
+    0 0 0 1px rgba(0, 240, 255, 0.2);
+}
+
+.icon {
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.socialLink:hover .icon {
+  color: #00f0ff;
+  transform: scale(1.2);
+}
+
+/* Extreme Hamburger Menu */
+.hamburger {
+  display: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 10001;
+  transition: all 0.3s ease;
+}
+
+.hamburgerGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.3) 0%, transparent 70%);
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hamburger:hover .hamburgerGlow {
+  opacity: 1;
+}
+
+.hamburger:hover {
+  border-color: #00f0ff;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.hamburgerBox {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hamburgerInner {
+  width: 24px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hamburgerInner::before,
+.hamburgerInner::after {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hamburgerInner::before {
+  top: -8px;
+}
+
+.hamburgerInner::after {
+  top: 8px;
+}
+
+.hamburger.open .hamburgerInner {
+  background: transparent;
+}
+
+.hamburger.open .hamburgerInner::before {
+  top: 0;
+  transform: rotate(45deg);
+  background: #00f0ff;
+}
+
+.hamburger.open .hamburgerInner::after {
+  top: 0;
+  transform: rotate(-45deg);
+  background: #00f0ff;
+}
+
+/* Mobile Menu Overlay */
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 9998;
+}
+
+/* ===== MOBILE STYLES - SA SOCIAL IKONAMA ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Sakrij desktop navigaciju na mobilnim uređajima */
+  .navContent:not(.mobileNavContent) {
+    display: none;
+  }
+
+  /* Stil za mobilni meni */
+  .mobileLinks {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(30px);
+    border-left: 1px solid rgba(0, 240, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 9999;
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .mobileLinks::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, transparent 50%);
+    z-index: -1;
+  }
+
+  .showMenu {
+    transform: translateX(0) !important;
+  }
+
+  .mobileLinks .navLink {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: slideInRight 0.6s ease-out calc(var(--i) * 0.1s) both;
+  }
+
+  .mobileLinks .navLink:hover {
+    background: rgba(0, 240, 255, 0.1);
+    transform: translateX(10px);
+  }
+
+  /* Social section u mobilnom meniju */
+  .mobileSocialSection {
+    margin-top: auto;
+    padding: 2rem 0 1rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .socialTitle {
+    font-size: 1rem;
+    color: #00f0ff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .mobileSocialLinks {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .mobileSocialLinks .socialLink {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobileSocialLinks .socialLink:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: #00f0ff;
+    transform: translateY(-5px) scale(1.1);
+  }
+
+  .mobileSocialLinks .icon {
+    font-size: 1.6rem;
+  }
+
+  .logoName {
+    font-size: 1.2rem;
+  }
+
+  .logoLastName {
+    font-size: 0.8rem;
+  }
+
+  /* Osiguraj da je logo iznad overlay-a */
+  .logo {
+    z-index: 10002;
+  }
+}
+
+/* Small mobile optimization */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem 1rem;
+  }
+
+  .mobileLinks {
+    width: 85%;
+    max-width: 280px;
+  }
+
+  .logo {
+    padding: 6px 12px;
+  }
+
+  .logoIcon {
+    font-size: 1.6rem;
+  }
+
+  .mobileLinks .navLink {
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .mobileSocialLinks {
+    gap: 1rem;
+  }
+
+  .mobileSocialLinks .socialLink {
+    width: 45px;
+    height: 45px;
+  }
+
+  .mobileSocialLinks .icon {
+    font-size: 1.4rem;
+  }
+}
+
+/* Animation for navbar entrance */
+@keyframes navbarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  animation: navbarSlideDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}

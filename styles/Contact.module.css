@@ -1,0 +1,403 @@
+/* Contact.module.css - BRUTAL VERSION (ONLY FORM) */
+
+.contact {
+  padding: 8rem 5%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Background Elements */
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floatingOrb1, .floatingOrb2 {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orb-color, rgba(0, 240, 255, 0.1)) 0%, transparent 70%);
+  filter: blur(40px);
+  animation: floatOrb 25s infinite linear;
+}
+
+.floatingOrb1 {
+  --orb-color: rgba(0, 240, 255, 0.1);
+  width: 250px;
+  height: 250px;
+  top: 15%;
+  right: 8%;
+}
+
+.floatingOrb2 {
+  --orb-color: rgba(255, 0, 255, 0.1);
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  left: 5%;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -50px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-20px, 30px) rotate(240deg);
+  }
+}
+
+.techGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, transparent 95%, rgba(0, 240, 255, 0.02) 95%),
+    linear-gradient(transparent 95%, rgba(0, 240, 255, 0.02) 95%);
+  background-size: 50px 50px;
+  opacity: 0.3;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.titleText {
+  display: block;
+  background: linear-gradient(45deg, #00f0ff, #ff00ff, #00ffaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 40px rgba(0, 240, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.4);
+  }
+}
+
+.titleSub {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.titleLine {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #00f0ff, #ff00ff);
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.titleLine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: lineShine 3s infinite;
+}
+
+@keyframes lineShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Content Layout - Centered */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form Container - Centered and Wider */
+.formContainer {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.4s;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contactForm {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.formGlow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00f0ff, #ff00ff, #00ffaa);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.contactForm:hover .formGlow {
+  opacity: 0.2;
+}
+
+.formTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(45deg, #fff, #00f0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Input Groups */
+.inputGroup {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00f0ff;
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.inputField, .textareaField {
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.textareaField {
+  min-height: 150px;
+  resize: vertical;
+  padding-top: 1.2rem;
+}
+
+.inputField::placeholder, .textareaField::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.inputField:focus, .textareaField:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #00f0ff;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
+.inputField:focus + .inputFocusLine,
+.textareaField:focus + .inputFocusLine {
+  width: 100%;
+}
+
+.inputFocusLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00f0ff, #ff00ff);
+  transition: width 0.3s ease;
+  z-index: 2;
+}
+
+/* Submit Button */
+.submitButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #00f0ff, #00a8cc);
+  color: #000;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.submitButton:hover:not(:disabled) .buttonGlow {
+  left: 100%;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 240, 255, 0.5);
+}
+
+.submitButton.submitting {
+  background: linear-gradient(135deg, #666, #888);
+}
+
+.buttonIcon {
+  font-size: 1.3rem;
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .formContainer {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 6rem 2rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .contactForm {
+    padding: 2.5rem;
+  }
+
+  .formTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .titleSub {
+    font-size: 1.2rem;
+  }
+
+  .contactForm {
+    padding: 2rem;
+  }
+
+  .inputField, .textareaField {
+    padding: 1rem 1rem 1rem 3rem;
+    font-size: 1rem;
+  }
+
+  .inputIcon {
+    left: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .submitButton {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}
