@@ -86,7 +86,7 @@ export default function About() {
                 <div className={styles.mission}>
                   <FaHeart className={styles.missionIcon} />
                   <span>
-                    My mission: <strong>Transform complex problems into elegant solutions</strong> 
+                    My mission: <strong>Transform complex problems into elegant solutions </strong> 
                     through creativity and technical excellence.
                   </span>
                 </div>

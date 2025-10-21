@@ -61,7 +61,6 @@ export default function Skills() {
     { name: "Python", icon: <FaPython />, description: "Versatile programming language", category: "backend" },
     { name: "C++", icon: <SiCplusplus />, description: "System programming", category: "backend" },
     { name: "PHP", icon: <SiPhp />, description: "Server-side scripting", category: "backend" },
-    { name: ".NET MAUI", icon: <SiDotnet />, description: "Cross-platform development", category: "backend" },
 
     // Database
     { name: "MongoDB", icon: <SiMongodb />, description: "NoSQL document database", category: "database" },
@@ -70,6 +69,7 @@ export default function Skills() {
 
     // Mobile
     { name: "React Native", icon: <FaReact />, description: "Mobile app development", category: "mobile" },
+    { name: ".NET MAUI", icon: <SiDotnet />, description: "Cross-platform development", category: "mobile" },
 
     // Design
     { name: "Figma", icon: <SiFigma />, description: "UI/UX design tool", category: "design" },

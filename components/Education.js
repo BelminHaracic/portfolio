@@ -4,9 +4,17 @@ import { FaGraduationCap, FaUniversity, FaCalendar, FaAward, FaCode, FaBolt } fr
 
 export default function Education() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const educationRef = useRef(null);
 
   useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -21,6 +29,7 @@ export default function Education() {
     }
 
     return () => {
+      window.removeEventListener('resize', checkScreenSize);
       if (educationRef.current) {
         observer.unobserve(educationRef.current);
       }
@@ -29,15 +38,15 @@ export default function Education() {
 
   const educationData = [
     {
-    institution: "University of Zenica, Polytechnic Faculty",
-    degree: "Master of Software Engineering",
-    date: "November 2024 - Present",
-    duration: "Ongoing",
-    description: "Continuing specialization in software engineering with focus on advanced web technologies, system design, and AI-driven solutions.",
-    icon: <FaCode />,
-    type: "university",
-    status: "In Progress"
-  },
+      institution: "University of Zenica, Polytechnic Faculty",
+      degree: "Master of Software Engineering",
+      date: "November 2024 - Present",
+      duration: "Ongoing",
+      description: "Continuing specialization in software engineering with focus on advanced web technologies, system design, and AI-driven solutions.",
+      icon: <FaCode />,
+      type: "university",
+      status: "In Progress"
+    },
     {
       institution: "University of Zenica, Polytechnic Faculty",
       degree: "Software Engineering",
@@ -84,41 +93,41 @@ export default function Education() {
           {educationData.map((edu, index) => (
             <div 
               key={index} 
-              className={`${styles.timelineItem} ${isVisible ? styles.visible : ''}`}
+              className={`${styles.timelineItem} ${isVisible ? styles.visible : ''} ${isMobile ? styles.mobileItem : ''}`}
               style={{ '--delay': `${index * 0.3}s` }}
             >
-              {/* Timeline Line */}
-              <div className={styles.timelineLine}></div>
+              {/* Timeline Line - Hide on mobile */}
+              {!isMobile && <div className={styles.timelineLine}></div>}
               
               {/* Timeline Dot */}
-              <div className={styles.timelineDot}>
+              <div className={`${styles.timelineDot} ${isMobile ? styles.mobileDot : ''}`}>
                 <div className={styles.dotIcon}>{edu.icon}</div>
                 <div className={styles.dotGlow}></div>
               </div>
 
               {/* Education Card */}
-              <div className={styles.educationCard}>
+              <div className={`${styles.educationCard} ${isMobile ? styles.mobileCard : ''}`}>
                 {/* Card Glow Effect */}
                 <div className={styles.cardGlow}></div>
 
                 {/* Card Header */}
-                <div className={styles.cardHeader}>
+                <div className={`${styles.cardHeader} ${isMobile ? styles.mobileHeader : ''}`}>
                   <div className={styles.institutionInfo}>
-                    <div className={styles.institutionHeader}>
+                    <div className={`${styles.institutionHeader} ${isMobile ? styles.mobileInstitutionHeader : ''}`}>
                       <FaUniversity className={styles.institutionIcon} />
                       <h3 className={styles.institution}>{edu.institution}</h3>
                     </div>
-                    <div className={styles.degreeSection}>
+                    <div className={`${styles.degreeSection} ${isMobile ? styles.mobileDegreeSection : ''}`}>
                       <FaGraduationCap className={styles.degreeIcon} />
                       <p className={styles.degree}>{edu.degree}</p>
-                      <div className={styles.statusBadge}>
+                      <div className={`${styles.statusBadge} ${edu.status === 'In Progress' ? styles.inProgress : ''}`}>
                         <FaAward className={styles.statusIcon} />
                         <span>{edu.status}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className={styles.dateSection}>
+                  <div className={`${styles.dateSection} ${isMobile ? styles.mobileDateSection : ''}`}>
                     <div className={styles.dateInfo}>
                       <FaCalendar className={styles.dateIcon} />
                       <span className={styles.date}>{edu.date}</span>
@@ -132,10 +141,10 @@ export default function Education() {
                 </div>
 
                 {/* Description */}
-                <p className={styles.description}>{edu.description}</p>
+                <p className={`${styles.description} ${isMobile ? styles.mobileDescription : ''}`}>{edu.description}</p>
 
-                {/* Hover Effect */}
-                <div className={styles.cardHoverEffect}></div>
+                {/* Hover Effect - Hide on mobile */}
+                {!isMobile && <div className={styles.cardHoverEffect}></div>}
               </div>
             </div>
           ))}

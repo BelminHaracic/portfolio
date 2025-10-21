@@ -1,7 +1,7 @@
-/* Education.module.css - CLEAN VERSION */
+/* Education.module.css - MOBILE OPTIMIZED VERSION */
 
 .education {
-  padding: 8rem 5%;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 2rem);
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
   color: white;
   position: relative;
@@ -31,16 +31,16 @@
 
 .floatingOrb1 {
   --orb-color: rgba(0, 240, 255, 0.1);
-  width: 250px;
-  height: 250px;
+  width: min(250px, 40vw);
+  height: min(250px, 40vw);
   top: 10%;
   right: 10%;
 }
 
 .floatingOrb2 {
   --orb-color: rgba(255, 0, 255, 0.1);
-  width: 200px;
-  height: 200px;
+  width: min(200px, 30vw);
+  height: min(200px, 30vw);
   bottom: 15%;
   left: 8%;
 }
@@ -80,7 +80,7 @@
 /* Header Styles */
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
   opacity: 0;
   transform: translateY(50px);
   transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
@@ -92,7 +92,7 @@
 }
 
 .title {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   margin: 0;
   line-height: 1.2;
@@ -104,53 +104,24 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  0% {
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 40px rgba(0, 240, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.4);
-  }
 }
 
 .titleSub {
   display: block;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 0.5rem;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .titleLine {
-  width: 100px;
+  width: 80px;
   height: 4px;
   background: linear-gradient(90deg, #00f0ff, #ff00ff);
   margin: 1.5rem auto 0;
   border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.titleLine::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-  animation: lineShine 3s infinite;
-}
-
-@keyframes lineShine {
-  0% { left: -100%; }
-  100% { left: 100%; }
 }
 
 /* Timeline */
@@ -337,6 +308,12 @@
   border: 1px solid rgba(0, 255, 170, 0.3);
 }
 
+.statusBadge.inProgress {
+  background: rgba(255, 170, 0, 0.1);
+  color: #ffaa00;
+  border-color: rgba(255, 170, 0, 0.3);
+}
+
 .statusIcon {
   font-size: 0.8rem;
 }
@@ -423,51 +400,10 @@
   left: 100%;
 }
 
-/* Responsive Design */
+/* ===== MOBILE OPTIMIZATIONS ===== */
 @media (max-width: 768px) {
   .education {
-    padding: 6rem 2rem;
-  }
-
-  .title {
-    font-size: 3rem;
-  }
-
-  .timelineLine {
-    left: 25px;
-  }
-
-  .timelineDot {
-    left: 15px;
-    width: 35px;
-    height: 35px;
-  }
-
-  .educationCard {
-    margin-left: 60px;
-    padding: 2rem;
-  }
-
-  .institution {
-    font-size: 1.5rem;
-  }
-
-  .degree {
-    font-size: 1.1rem;
-  }
-
-  .cardHeader {
-    flex-direction: column;
-  }
-  
-  .dateSection {
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 480px) {
-  .education {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .title {
@@ -475,38 +411,164 @@
   }
 
   .titleSub {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  .educationCard {
-    margin-left: 50px;
+  /* Timeline adjustments for mobile */
+  .timelineLine {
+    display: none;
+  }
+
+  .timelineItem.mobileItem {
+    margin-bottom: 2rem;
+    transform: translateY(30px);
+  }
+
+  .timelineItem.mobileItem.visible {
+    transform: translateY(0);
+  }
+
+  .timelineDot.mobileDot {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 0 auto 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .educationCard.mobileCard {
+    margin-left: 0;
     padding: 1.5rem;
+    border-radius: 15px;
   }
 
-  .timelineDot {
-    left: 10px;
-    width: 30px;
-    height: 30px;
+  .educationCard.mobileCard:hover {
+    transform: none;
+  }
+
+  /* Card header mobile adjustments */
+  .cardHeader.mobileHeader {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .institutionInfo {
+    min-width: auto;
+  }
+
+  .institutionHeader.mobileInstitutionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .institution {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+
+  .degreeSection.mobileDegreeSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .degree {
+    font-size: 1.1rem;
+  }
+
+  .dateSection.mobileDateSection {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .dateInfo {
+    align-items: flex-start;
+  }
+
+  .date {
+    font-size: 0.9rem;
+  }
+
+  .description.mobileDescription {
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Hide hover effects on mobile */
+  .cardHoverEffect {
+    display: none;
+  }
+
+  .educationCard:hover .cardGlow {
+    opacity: 0;
+  }
+}
+
+/* ===== SMALL MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 480px) {
+  .education {
+    padding: 2.5rem 0.8rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .titleSub {
+    font-size: 0.9rem;
+  }
+
+  .educationCard.mobileCard {
+    padding: 1.2rem;
+  }
+
+  .institution {
+    font-size: 1.1rem;
+  }
+
+  .degree {
+    font-size: 1rem;
+  }
+
+  .statusBadge,
+  .typeBadge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+  }
+
+  .duration {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .description.mobileDescription {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .timelineDot.mobileDot {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 1rem;
   }
 
   .dotIcon {
     font-size: 1rem;
   }
+}
 
-  .institutionHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .degreeSection {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .description {
-    padding: 1rem;
-    font-size: 0.9rem;
+/* ===== LARGE SCREENS ===== */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
   }
 }

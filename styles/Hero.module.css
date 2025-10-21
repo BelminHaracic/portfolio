@@ -1,4 +1,4 @@
-/* Hero.module.css */
+/* Hero.module.css - MOBILE OPTIMIZED */
 
 .hero {
   display: flex;
@@ -483,84 +483,107 @@
   }
 }
 
-/* Responsive design */
-@media (max-width: 1024px) {
-  .hero {
-    padding: 0 3%;
-  }
-  
-  .textContainer {
-    max-width: 55%;
-    padding: 30px;
-  }
-  
-  .greeting {
-    font-size: 3rem;
-  }
-  
-  .name {
-    font-size: 3.5rem;
-  }
-  
-  .profileImage {
-    width: 320px;
-    height: 320px;
-  }
-}
-
+/* ===== MOBILE OPTIMIZATIONS ===== */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
-    justify-content: center;
-    padding: 0 2rem;
+    justify-content: flex-start; /* Promijenjeno sa center na flex-start */
+    padding: 100px 1.5rem 2rem; /* Povećan padding-top sa 80px na 100px */
     height: auto;
     min-height: 100vh;
-    gap: 40px;
+    gap: 30px;
+    text-align: center;
   }
 
   .textContainer {
     max-width: 100%;
-    text-align: center;
-    margin-bottom: 0;
-    padding: 30px 20px;
+    padding: 25px 20px;
+    margin: 0;
+    transform: translateY(30px);
+    order: 2;
+    margin-top: 20px; /* Dodan margin-top za dodatni razmak */
+  }
+
+  .textContainer.visible {
+    transform: translateY(0);
+  }
+
+  .textContainer:hover {
+    transform: translateY(-5px);
   }
 
   .greeting {
-    font-size: 2.5rem;
+    font-size: 2rem;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0.5rem;
   }
 
   .name {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .typingContainer {
+    margin-bottom: 2rem;
   }
 
   .description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     white-space: normal;
     border-left: none;
     padding-left: 0;
     animation: none;
+    line-height: 1.5;
+    text-align: center;
   }
 
   .downloadButton {
     padding: 1rem 2rem;
     font-size: 1.1rem;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
   }
 
   .socialMedia {
     justify-content: center;
     gap: 15px;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
   }
   
   .socialLink {
-    padding: 10px 15px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 140px;
+    max-width: 160px;
+    justify-content: center;
+  }
+
+  .imageContainer {
+    order: 1;
+    transform: translateY(30px);
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 30px; /* Dodan margin-top za sliku */
+  }
+
+  .imageContainer.visible {
+    transform: translateY(0);
   }
 
   .profileImage {
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
+    border-width: 2px;
   }
-  
+
   .floatingBadge1, .floatingBadge2, .floatingBadge3 {
     display: none;
   }
@@ -568,32 +591,65 @@
   .scrollIndicator {
     display: none;
   }
+
+  /* Optimizacija floating elemenata za mobile */
+  .floatingElement1,
+  .floatingElement2,
+  .floatingElement3,
+  .floatingElement4 {
+    width: 120px;
+    height: 120px;
+    filter: blur(25px);
+  }
+
+  .floatingElement1 {
+    top: 15%; /* Pomjereno niže */
+    left: 2%;
+  }
+
+  .floatingElement2 {
+    top: 75%; /* Pomjereno niže */
+    right: 2%;
+  }
+
+  .floatingElement3 {
+    bottom: 15%; /* Pomjereno više */
+    left: 5%;
+  }
+
+  .floatingElement4 {
+    top: 25%; /* Pomjereno niže */
+    right: 5%;
+  }
 }
 
+/* ===== SMALL MOBILE OPTIMIZATIONS ===== */
 @media (max-width: 480px) {
   .hero {
-    padding: 0 1.5rem;
+    padding: 90px 1rem 1.5rem; /* Povećan padding-top */
+    gap: 25px;
   }
   
   .textContainer {
-    padding: 25px 15px;
+    padding: 20px 15px;
+    margin-top: 15px;
   }
   
   .greeting {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .name {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   
   .description {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .profileImage {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
   
   .socialMedia {
@@ -603,7 +659,99 @@
   }
   
   .socialLink {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+  }
+
+  .downloadButton {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .floatingElement1,
+  .floatingElement2,
+  .floatingElement3,
+  .floatingElement4 {
+    width: 100px;
+    height: 100px;
+  }
+
+  .imageContainer {
+    margin-top: 25px;
+  }
+}
+
+/* ===== EXTRA SMALL DEVICES ===== */
+@media (max-width: 380px) {
+  .hero {
+    padding: 80px 0.8rem 1rem; /* Povećan padding-top */
+    justify-content: flex-start;
+  }
+
+  .greeting {
+    font-size: 1.6rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .profileImage {
     width: 180px;
-    justify-content: center;
+    height: 180px;
+  }
+
+  .textContainer {
+    padding: 15px 12px;
+    margin-top: 10px;
+  }
+
+  .downloadButton {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .imageContainer {
+    margin-top: 20px;
+  }
+}
+
+/* ===== VRLO MALI EKRANI (iPhone SE etc.) ===== */
+@media (max-width: 320px) {
+  .hero {
+    padding: 70px 0.5rem 1rem; /* Još veći padding za vrlo male ekrane */
+    gap: 20px;
+  }
+
+  .textContainer {
+    padding: 12px 10px;
+    margin-top: 5px;
+  }
+
+  .greeting {
+    font-size: 1.4rem;
+  }
+
+  .name {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .profileImage {
+    width: 160px;
+    height: 160px;
+  }
+
+  .downloadButton {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .imageContainer {
+    margin-top: 15px;
   }
 }

@@ -50,7 +50,7 @@ export default function Projects() {
     };
   }, []);
 
-  const projects = [
+const projects = [
     {
       title: "e-Bus Management System",
       description: "Complete bus management platform with user administration, route planning, and real-time ticket validation system.",
@@ -63,6 +63,26 @@ export default function Projects() {
       featured: true,
       year: "2024",
       status: "Completed"
+    },
+    {
+      title: "Mini Webshop - Full Stack",
+      description: "Complete e-commerce platform with product management, shopping cart, order processing, and admin dashboard.",
+      image: "/images/webshop.jpg", // Dodaj sliku u public/images folder
+      githubLink: "https://github.com/BelminHaracic/mini-webshop-frontend",
+      liveLink: "https://mini-webshop.web.app/",
+      technologies: [<FaReact key="react" />, <SiNextdotjs key="next" />, <SiTypescript key="ts" />, <FaNodeJs key="node" />, <SiMongodb key="mongo" />],
+      type: "web",
+      category: "Full Stack",
+      featured: true,
+      year: "2024",
+      status: "Completed",
+      features: [
+        "Product catalog & shopping cart",
+        "User order management", 
+        "Admin product management",
+        "Order processing system",
+        "Firebase deployment"
+      ]
     },
     {
       title: "Mobile Ticket App",
@@ -91,6 +111,28 @@ export default function Projects() {
       status: "Completed"
     },
     {
+      title: "Windows 11 Simulation",
+      description: "Interactive Windows 11 desktop simulation built with Angular and Next.js, replicating the modern Windows 11 UI experience in browser.",
+      image: "/images/windows11.jpg", // Dodaj sliku u public/images folder
+      githubLink: "https://github.com/BelminHaracic/windows11-simulation",
+      liveLink: "#",
+      technologies: [<SiAngular key="angular" />, <SiNextdotjs key="next" />, <SiTypescript key="ts" />, <FaReact key="react" />],
+      type: "web",
+      category: "Frontend",
+      featured: true,
+      year: "2024",
+      status: "In Progress",
+      features: [
+        "Fully interactive desktop environment",
+        "Start menu with app launcher",
+        "Draggable and resizable windows",
+        "Taskbar with system tray",
+        "File explorer simulation",
+        "Settings panel replica",
+        "Responsive design"
+      ]
+    },
+    {
       title: "Tourist Website",
       description: "Modern travel platform with trip filtering, ratings system, and seamless booking experience.",
       image: "/images/webtravel.jpg",
@@ -114,7 +156,7 @@ export default function Projects() {
       category: "Mobile App",
       featured: false,
       year: "2023",
-      status: "In Progress"
+      status: "Completed"
     },
   ];
 
