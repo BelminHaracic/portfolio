@@ -114,8 +114,8 @@ const projects = [
       title: "Windows 11 Simulation",
       description: "Interactive Windows 11 desktop simulation built with Angular and Next.js, replicating the modern Windows 11 UI experience in browser.",
       image: "/images/windows11.jpg", // Dodaj sliku u public/images folder
-      githubLink: "https://github.com/BelminHaracic/windows11-simulation",
-      liveLink: "#",
+      githubLink: "https://github.com/BelminHaracic/win11-simulator",
+      liveLink: "https://win11-simulator.vercel.app/",
       technologies: [<SiAngular key="angular" />, <SiNextdotjs key="next" />, <SiTypescript key="ts" />, <FaReact key="react" />],
       type: "web",
       category: "Frontend",
